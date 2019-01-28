@@ -1,124 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="srikar appalaraju">
 
-    <title>Logo detection using Few-shot deep learning</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+  <title>Scalable Logo Recognition using Proxies</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- CSS  -->
+  <!--<link href="./css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="./css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
 
-    <!-- Custom CSS -->
-    <!--
-    <link href="css/main.css" rel="stylesheet">
-    <link href="css/magnific-popup.css" rel="stylesheet">
-    -->
-    
-    <script src="https://code.jquery.com/jquery-latest.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <!--<script src="js/jquery.easyPaginate.js"></script>-->
-    <!--<script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/main.js"></script>-->
+  <!-- JS -->
+  <!-- at bottom -->
 </head>
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-    <!--
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Top</a>
-            </div>
+<body>
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container scrollspy" id="home">
 
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="hidden"> <a class="page-scroll" href="#page-top"></a> </li>
-                    <li> <a class="page-scroll" href="#abstract">Abstract</a> </li>
-                    <li> <a class="page-scroll" href="#results">Results</a> </li>
-                    <li> <a class="page-scroll" href="#paper">Paper</a> </li>
-                    <li> <a class="page-scroll" href="#data">Data</a> </li>
-                    <li> <a class="page-scroll" href="#grasp_transfer">Grasp Transfer</a> </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    -->
-    <br><br>
-    
-    <div class="container">
-        <div><center><h2>Scalable Logo Recognition using Proxies</h2></center></div>
-        <div id="authors">
-            <h5 id="author1">
-                <div>Istvan Fehervari</div>
-                <div>Amazon.com</div> 
-            </h5>
-             <h5 id="author2">
-                <div>Srikar Appalaraju</div>
-                <div>Amazon.com</div> 
-            </h5>
-        </div>
+      <h4 class="header center black-text">Scalable Logo Recognition using Proxies</h4>
 
-
-        <h5> <a href="/files/WACV19_poster_at_conference.pdf">Poster</a> | <a href="/files/WACV2019_double_blind_conference_reviews.pdf">Double blind reviews</a>  </h5>
-
-        <p>This webpage contains summary details for the paper that is going to be published in <b>IEEE WACV 2019</b> conference held in Hawaii, USA. This paper discusses an approach to detect product logos in images. </p>
-        <section id="abstract" class="abstract-section">
-        <h3>Abstract</h3>
-        <p>Logo recognition is the task of identifying and classifying logos. Logo recognition is a challenging problem as there is no clear definition of a logo and there are huge variations of logos, brands and re-training to cover every variation is impractical. In this paper, we formulate logo recognition as a few-shot object detection problem. The two main compo- nents in our pipeline are universal logo detector and few- shot logo recognizer. The universal logo detector is a class- agnostic deep object detector network which tries to learn the characteristics of what makes a logo. It predicts bound- ing boxes on likely logo regions. These logo regions are then classified by logo recognizer using nearest neighbor search, trained by triplet loss using proxies. We also annotated a first of its kind product logo dataset containing 2000 lo- gos from 295K images collected from Amazon called PL2K. Our pipeline achieves 97% recall with 0.6 mAP on PL2K test dataset and state-of-the-art 0.565 mAP on the publicly available FlickrLogos-32 test set without fine-tuning.</p>
-        </section>
-
-        <section id="results" class="results-section">
-        <h3>Results</h3>
-        <!--
-        <p id = "results-text">This is a random sampling of ouputs from the test set. As in the paper, we present the input image, the input 'template' shape that was deformed by DeformNet, the output of the Point Set Generation 9prior work), the output of DeformNet, and the ground truth point cloud. We also include an animated transition from the template to the output, to more clearly show the effect of the DeformNet deformation; to be clear, the deformation itself is one-shot.</p>
-        <img id="result-image" src = "imgs/results.png">
-        <div id="results_div" class='popup-gallery'>
-        <div class="result">
-            <a href="imgs/collated/100_11.png" class="res_collated_img" title="img_0"><img src="imgs/thumbnails/100_11.png"></a>
-            <a href="imgs/gifs/anim_100_11.gif" class="res_gif" title="gif_0"><img src="imgs/gifs/anim_100_11.gif"></a>
-        </div>
-        <div class="result">
-            <a href="imgs/collated/100_9.png" class="res_collated_img" title="img_6"><img src="imgs/thumbnails/100_9.png"></a>
-            <a href="imgs/gifs/anim_100_9.gif" class="res_gif" title="gif_6"><img src="imgs/gifs/anim_100_9.gif"></a>
-        </div>
-        </div>
-        </section>
-        -->
-
-        <section id="paper" class="paper-section">
-        <h3>Paper</h3>
-        <p>The Arxiv link <a href="https://arxiv.org/abs/1811.08009">can be found here </a></p>
-
-        <!--<h3>Citing this work</h3>
-        <p>If you find this work useful in your research, please consider citing:</p>
-         <pre><code>@inproceedings{?,
-              title={DeformNet: Free-Form Deformation Network for 3D Shape Reconstruction from a Single Image},
-              author={Kurenkov, Andrey and Jingwei, Ji and Garg, Animesh and Mehta, Virag and Gwak, JunYoung and Choy, Chris and Savarese, Silvio},
-              booktitle = {Neural Information Processing Systems {NIPS})},
-          year={2017}}
-         </code></pre>-->
-        </section>
-        
-        <!--
-        <section id="data" class="code-section">
-        <h2>Data</h2>
-        <p>We used <a href="http://shapenet.cs.stanford.edu">ShapeNet</a> as the base dataset, as explained in the paper. </p>
-        </section>
-        -->
-
-        <!--
-        <h3>License</h3>
-        <p>MIT License</p>-->
+      <div class="row center">
+        <h5 class="header col s6">
+          <div class="author"><a href="#" >István Fehérvári</a></div>
+          <div class="school"><a href="https://www.aboutamazon.com/research" target="blank">Amazon.com</a></div>
+        </h5>
+        <h5 class="header col s6">
+          <div class="author"><a href="#">Srikar Appalaraju</a></div>
+          <div class="school"><a href="https://www.aboutamazon.com/research" >Amazon.com</a></div>
+        </h5>
+      </div>
     </div>
-</body>
-</html>
+  </div>
+
+  <div class="container">
+
+    <div class="section">
+      <div class="row">
+        <div class="col s12">
+          <img class="responsive-img" style="width:100%;"  src="files/main_image.png">
+        </div>
+      </div>
+    </div>
+
+    <div class="row section scrollspy" id="abstract">
+      <div class="title">Abstract</div>
+      <p align="justify">
+      Logo recognition is the task of identifying and classifying logos. Logo recognition is a challenging problem as there is no clear definition of a logo and there are huge variations of logos, brands and re-training to cover every variation is impractical. In this paper, we formulate logo recognition as a few-shot object detection problem. The two main components in our pipeline are universal logo detector and fewshot logo recognizer. The universal logo detector is a classagnostic deep object detector network which tries to learn the characteristics of what makes a logo. It predicts bounding boxes on likely logo regions. These logo regions are then classified by logo recognizer using nearest neighbor search, trained by triplet loss using proxies. We also annotated a first of its kind product logo dataset containing 2000 logos from 295K images collected from Amazon called PL2K.  Our pipeline achieves 97% recall with 0.6 mAP on PL2K test dataset and state-of-the-art 0.565 mAP on the publicly available FlickrLogos-32 test set without fine-tuning.
+      </p>
+    </div>
+
+    <div class="row section scrollspy" id="download">
+      <div class="title">Downloads</div>
+        <div class="col s12 center">
+          <a href="https://arxiv.org/pdf/1811.08009.pdf" target="_blank">
+            <img src="files/icon_pdf.png" width="80" height="80">
+          <!-- </a> -->
+          <br>
+          </a><a href="https://arxiv.org/pdf/1811.08009.pdf" target="_blank">Paper</a>
+        </div>
+
+    </div>
+
+    <div class="row">
+      <div class="subtitle">Bibtex</div>
+      <pre>@article{istvan2019,
+  author    = {Istv{\'{a}}n Feh{\'{e}}rv{\'{a}}ri and Srikar Appalaraju},
+  title     = {Scalable Logo Recognition using Proxies},
+  journal   = {IEEE WACV},
+  year      = {2019},
+  url       = {http://arxiv.org/abs/1811.08009},
+  timestamp = {Mon, 26 Nov 2018 12:52:45 +0100},
+  biburl    = {https://dblp.org/rec/bib/journals/corr/abs-1811-08009},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+} 
+</pre>
+
+    </div>
+
+    <div class="section row scrollspy" id="results">
+      <div class="title">Qualitative Results</div>
+        See paper for Quantitative results
+
+      <div class="row">
+        <div class="col s12">
+          <div class="material-placeholder"><a class="materialboxed initialized"><img class="responsive-img" src="./files/qualitative_results.png"></a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="page-footer white">
+    <div class="footer-copyright center black-text">
+      Copyright © 2019
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  
+<div class="hiddendiv common"></div><script src="chrome-extension://hhojmcideegachlhfgfdhailpfhgknjm/web_accessible_resources/index.js"></script></body></html>
